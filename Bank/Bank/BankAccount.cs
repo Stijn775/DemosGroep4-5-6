@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace Bank
 {
+    class NietGenoegGeldException : Exception
+    {
+        public NietGenoegGeldException():base("Er is niet genoeg geld op het account!")
+        {
+            
+        }
+    }
     internal class BankAccount
     { 
 
@@ -17,8 +24,13 @@ namespace Bank
 
         public int Budget { get; set; }
 
-        public void NeemGeldOp(int bedrag)
+        public void NeemGeldOp(string bedragString)
         {
+            int bedrag = int.Parse(bedragString);
+            if(bedrag > Budget)
+            {
+                throw new NietGenoegGeldException();
+            }
             Budget -= bedrag;
         }
      
