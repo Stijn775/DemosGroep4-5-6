@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics.Eventing.Reader;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,7 +17,7 @@ namespace TextEncrypter
     /// </summary>
     public partial class MainWindow : Window
     {
-        IEncryptor encryptor;
+        IEncryptor encryptor = new ReverseEncryptor();
         public MainWindow()
         {
             InitializeComponent();
@@ -24,18 +25,30 @@ namespace TextEncrypter
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            // Stel encryptor correct in.
+           
+            if (sender == reverseRadioButton)
+            {
+                encryptor = new ReverseEncryptor();
+            } else if(sender == shiftOneRadioButton)
+            {
+                encryptor = new ShiftOneEncryptor();
+            } else if(sender == reverseAlphabetRadioButton)
+            {
+                encryptor = new ReverseAlphabetEncryptor();
+            }
         }
 
         private void Encrypt_Clicked(object sender, RoutedEventArgs e)
         {
-
+            string decrypted = encryptor.Encrypt(encryptTextBox.Text);
+            decryptTextBox.Text = decrypted;
         }
 
 
         private void Decrypt_Clicked(object sender, RoutedEventArgs e)
         {
-
+            string encrypted = encryptor.Decrypt(decryptTextBox.Text);
+            encryptTextBox.Text = encrypted;
         }
     }
 }

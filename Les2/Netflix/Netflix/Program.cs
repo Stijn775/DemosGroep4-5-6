@@ -18,7 +18,7 @@
                 new NetflixSerie("Lucifer", 6, 93, new DateTime(2016, 1, 25), "Tom Kapinos", 8.1),
                 new NetflixSerie("The Crown", 5, 50, new DateTime(2016, 11, 4), "Peter Morgan", 8.6)
             };
-
+            series.Sort();
          
 
             foreach(NetflixSerie s in series)

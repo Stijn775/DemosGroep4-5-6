@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace CreateInterfaces
 {
+    // Een interface het wegschrijven van data
     internal interface IWritable
     {
+        void Write(string path);
     }
 }

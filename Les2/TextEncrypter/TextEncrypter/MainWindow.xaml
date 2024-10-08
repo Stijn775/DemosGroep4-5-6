@@ -26,9 +26,9 @@
         <StackPanel>
             <GroupBox Header="Techniek">
                 <StackPanel>
-                    <RadioButton IsChecked="True" Checked="RadioButton_Checked">Achterstevoren</RadioButton>
-                    <RadioButton >A=B, B=C, C=D, ..., Z=A</RadioButton>
-                    <RadioButton >A=Z, B=Y, C=X, ...</RadioButton>
+                    <RadioButton x:Name="reverseRadioButton" IsChecked="True" Checked="RadioButton_Checked">Achterstevoren</RadioButton>
+                    <RadioButton x:Name="shiftOneRadioButton"   Checked="RadioButton_Checked" >A=B, B=C, C=D, ..., Z=A</RadioButton>
+                    <RadioButton x:Name="reverseAlphabetRadioButton" Checked="RadioButton_Checked" >A=Z, B=Y, C=X, ...</RadioButton>
                 </StackPanel>
             </GroupBox>
 
