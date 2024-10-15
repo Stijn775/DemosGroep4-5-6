@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -25,7 +26,7 @@ namespace UserEventDemo
         public event EventHandler<Person> selectionChanged;
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private List<Person> people = new List<Person>()
+        private ObservableCollection<Person> people = new ObservableCollection<Person>()
             {
                 new Person() { Name = "John Doe", PhoneNumber = "1234567890", Email = "john.doe@example.com" },
                 new Person() { Name = "Jane Smith", PhoneNumber = "9876543210", Email = "jane.smith@example.com" },
@@ -53,10 +54,17 @@ namespace UserEventDemo
                 OnPropertyChanged();
             }
         }
+
+        public ObservableCollection<Person> People { 
+            get => people; 
+            set => people = value;
+        }
+
         public List()
         {
             InitializeComponent();
-            PeopleListView.ItemsSource = people;
+            DataContext = this;
+           
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
@@ -81,11 +89,8 @@ namespace UserEventDemo
 
         internal void AddPerson(Person obj)
         {
-            people.Add(obj);
-            PeopleListView.ItemsSource = null;
-
-            PeopleListView.ItemsSource = people;
-
+            People.Add(obj);
+           // OnPropertyChanged("People");
         }
 
         //protected virtual void OnSelectionChanged(Person p)

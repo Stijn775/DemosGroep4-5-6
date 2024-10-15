@@ -9,8 +9,19 @@
       >
 
     <Grid>
-        <ListView x:Name="PeopleListView" SelectionChanged="PeopleListView_SelectionChanged">
-
+        <ListView x:Name="PeopleListView" SelectionChanged="PeopleListView_SelectionChanged"
+                  ItemsSource="{Binding People}">
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="local:Person">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical" >
+                            <Label Content="{Binding Name}"/>
+                            <Label Content="{Binding Email}"/>
+                        </StackPanel>
+                        <Label Content="{Binding PhoneNumber}" FontSize="20" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </UserControl>
