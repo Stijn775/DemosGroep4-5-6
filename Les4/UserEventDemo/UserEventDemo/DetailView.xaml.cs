@@ -30,5 +30,12 @@ namespace UserEventDemo
         {
             ShowView.ShowSelectedPerson(p);
         }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddView.Visibility = Visibility.Visible;
+            ShowView.Visibility = Visibility.Hidden;
+
+        }
     }
 }

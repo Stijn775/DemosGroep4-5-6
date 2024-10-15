@@ -15,13 +15,13 @@
         </Grid.RowDefinitions>
 
         <local:ShowView x:Name="ShowView" />
-        <local:AddView Visibility="Hidden"/>
+        <local:AddView x:Name="AddView" Visibility="Hidden"/>
 
 
         <StackPanel Orientation="Horizontal" Grid.Row="1">
 
         <Button x:Name="EditButton">Edit</Button>
-        <Button x:Name="AddButton">Add new</Button>
+        <Button x:Name="AddButton" Click="AddButton_Click">Add new</Button>
           
         </StackPanel>
     </Grid>
