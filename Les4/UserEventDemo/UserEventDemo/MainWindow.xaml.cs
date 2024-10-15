@@ -23,6 +23,13 @@ namespace UserEventDemo
             DetailView.SetSelectedPerson(new Person("Demo","Demo","Demo"));
             //ListView.onSelectionChanged += SelectedPersonChanged;
             ListView.PropertyChanged += ListView_PropertyChanged;
+           // DetailView.addPerson += DetailView_addPerson;
+            DetailView.AddView.addPerson += DetailView_addPerson;
+        }
+
+        private void DetailView_addPerson(Person obj)
+        {
+            ListView.AddPerson(obj);
         }
 
         private void ListView_PropertyChanged(object? sender, PropertyChangedEventArgs e)

@@ -78,7 +78,16 @@ namespace UserEventDemo
                 //}
             }
         }
-        
+
+        internal void AddPerson(Person obj)
+        {
+            people.Add(obj);
+            PeopleListView.ItemsSource = null;
+
+            PeopleListView.ItemsSource = people;
+
+        }
+
         //protected virtual void OnSelectionChanged(Person p)
         //{
         //    selectionChanged?.Invoke(this, p);

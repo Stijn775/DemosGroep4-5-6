@@ -20,9 +20,18 @@ namespace UserEventDemo
     /// </summary>
     public partial class AddView : UserControl
     {
+
+        public event Action<Person> addPerson;
+
         public AddView()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Person p = new Person(NameTextBox.Text, TelTextBox.Text, EmailTextBox.Text);
+            addPerson?.Invoke(p);
         }
     }
 }

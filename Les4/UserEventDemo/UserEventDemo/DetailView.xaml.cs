@@ -20,10 +20,18 @@ namespace UserEventDemo
     /// </summary>
     public partial class DetailView : UserControl
     {
+      //  public event Action<Person> addPerson;
         public DetailView()
         {
             InitializeComponent();
-            
+            AddView.addPerson += AddView_addPerson;
+        }
+
+        private void AddView_addPerson(Person obj)
+        {
+            AddView.Visibility = Visibility.Hidden;
+            ShowView.Visibility = Visibility.Visible;
+           // addPerson(obj);
         }
 
         public void SetSelectedPerson(Person p)
