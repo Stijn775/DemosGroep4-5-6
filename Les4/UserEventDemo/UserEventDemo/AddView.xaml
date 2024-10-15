@@ -9,11 +9,11 @@
     <Grid>
         <StackPanel>
             <Label Content="Name:"/>
-            <TextBox x:Name="NameTextBox"/>
+            <TextBox x:Name="NameTextBox" Text="{Binding Name}"/>
             <Label Content="Tel:"/>
-            <TextBox x:Name="TelTextBox"/>
+            <TextBox x:Name="TelTextBox" Text="{Binding PhoneNumber}"/>
             <Label Content="Email:"/>
-            <TextBox x:Name="EmailTextBox"/>
+            <TextBox x:Name="EmailTextBox" Text="{Binding Email}"/>
 
             <Button Click="Button_Click">Save</Button>
             <Button>Cancel</Button>

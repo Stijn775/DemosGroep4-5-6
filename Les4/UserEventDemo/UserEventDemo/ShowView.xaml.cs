@@ -29,9 +29,7 @@ namespace UserEventDemo
         {
             if(p!= null)
             {
-                NameLabel.Content = p.Name;
-                PhoneNumberLabel.Content = p.PhoneNumber;
-                EmailLabel.Content = p.Email;
+                DataContext = p;
             }
         }
     }
