@@ -16,15 +16,16 @@ namespace DemoMVVM.Todo.ViewModel
     {
         private TodoListStatus? status;
         private bool isEnabled;
+        private Models.Todo selectedTodo;
 
         public RelayCommand CreateClicked { get; set; }
         public RelayCommand EditClicked { get; set; }
         public RelayCommand DeleteClicked { get; set; }
         public  ObservableCollection<Models.Todo> Todos { get; set; }
 
-        public TodoListStatus? Status { get => status; 
-            set => SetProperty(ref status, value); }
-        public bool IsEnabled { get => isEnabled; set => SetProperty(ref isEnabled, value); } 
+        public TodoListStatus? Status { get => status; set => SetProperty(ref status, value); }
+        public bool IsEnabled { get => isEnabled; set => SetProperty(ref isEnabled, value); }
+        public Models.Todo SelectedTodo { get => selectedTodo; set => SetProperty(ref selectedTodo, value); }
 
         public TodoListViewModel()
         {
@@ -53,12 +54,12 @@ namespace DemoMVVM.Todo.ViewModel
 
         private bool CanEditCommand()
         {
-            return false;
+            return SelectedTodo!= null;
         }
 
         private void EditCommand()
         {
-            throw new NotImplementedException();
+            Status = TodoListStatus.Edit;
         }
 
 

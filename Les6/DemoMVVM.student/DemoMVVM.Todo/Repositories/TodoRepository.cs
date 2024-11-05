@@ -11,6 +11,12 @@ namespace DemoMVVM.Todo.Repositories
     {
 
         static ObservableCollection<Models.Todo> todos = new ObservableCollection<Models.Todo>();
+
+        static TodoRepository()
+        {
+            todos.Add(new Models.Todo() { Title="Demo1", DueDate= DateTime.Now });
+            todos.Add(new Models.Todo() { Title = "Demo2", DueDate = DateTime.Now });
+        }
         public static void Add(Models.Todo todo)
         {
             todos.Add(todo);

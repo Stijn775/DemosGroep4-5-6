@@ -16,14 +16,14 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <ListView Margin="5" ItemsSource="{Binding Todos}" >
+        <ListView Margin="5" ItemsSource="{Binding Todos}" SelectedItem="{Binding SelectedTodo}">
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <StackPanel Orientation="Horizontal">
-                        <CheckBox />
+                        <CheckBox IsChecked="{Binding Checked}"/>
                         <StackPanel Orientation="Vertical">
-                            <Label />
-                            <Label />
+                            <Label Content="{Binding Title}"/>
+                            <Label Content="{Binding DueDate}"/>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>

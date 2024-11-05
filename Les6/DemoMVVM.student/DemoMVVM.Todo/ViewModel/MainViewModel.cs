@@ -16,6 +16,22 @@ namespace DemoMVVM.Todo.ViewModel
         public MainViewModel()
         {
             TodoListViewModel.PropertyChanged += TodoListViewModel_PropertyChanged;
+            TodoDetailViewModel.PropertyChanged += TodoDetailViewModel_PropertyChanged;
+        }
+
+        private void TodoDetailViewModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case "Status":
+                    if(TodoDetailViewModel.Status == Enumerations.TodoDetailStatus.ItemCreated)
+                    {
+                        TodoDetailViewModel.IsEnabled = false;
+                        TodoListViewModel.IsEnabled = true;
+                        TodoListViewModel.Status = null;
+                    }
+                    break;
+            }
         }
 
         private void TodoListViewModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -27,7 +43,19 @@ namespace DemoMVVM.Todo.ViewModel
                     {
                         TodoDetailViewModel.IsEnabled = true;
                         TodoListViewModel.IsEnabled = false;
+                        TodoDetailViewModel.Status = Enumerations.TodoDetailStatus.Create;
+                    } else if(TodoListViewModel.Status == Enumerations.TodoListStatus.Edit)
+                    {
+                        TodoDetailViewModel.IsEnabled = true;
+                        TodoListViewModel.IsEnabled = false;
+                        TodoDetailViewModel.Status = Enumerations.TodoDetailStatus.Edit;
+                        TodoDetailViewModel.Id = TodoListViewModel.SelectedTodo.Id;
                     }
+                    break;
+                case "SelectedTodo":
+                    TodoDetailViewModel.TodoTitle = TodoListViewModel.SelectedTodo.Title;
+                    TodoDetailViewModel.TodoDueDate = TodoListViewModel.SelectedTodo.DueDate;
+                    TodoDetailViewModel.TodoIsChecked = TodoListViewModel.SelectedTodo.Checked;
                     break;
             }
         }
