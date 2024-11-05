@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
         <ListView Margin="5" ItemsSource="{Binding Todos}" SelectedItem="{Binding SelectedTodo}">
             <ListView.ItemTemplate>
-                <DataTemplate >
+                <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <CheckBox IsChecked="{Binding Checked}"/>
                         <StackPanel Orientation="Vertical">

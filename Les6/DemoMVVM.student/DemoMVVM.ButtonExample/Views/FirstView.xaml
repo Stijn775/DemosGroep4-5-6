@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:DemoMVVM.ButtonExample.Views" xmlns:viewmodels="clr-namespace:DemoMVVM.ButtonExample.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:FirstViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Cyan">
+    <Grid Background="{Binding SelectedColor}">
         <StackPanel VerticalAlignment="Bottom">
             <Button Command="{Binding SecondButtonCommand}">Go To View 2</Button>
             <Button Command="{Binding ThirdButtonCommand}">Go To View 3</Button>
