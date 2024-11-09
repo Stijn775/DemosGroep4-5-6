@@ -1,13 +1,7 @@
 ﻿using Odisee.Common;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DemoMVVM.Todo.Models;
 using DemoMVVM.Todo.Repositories;
-using System.ComponentModel;
 using DemoMVVM.Todo.Enumerations;
 
 namespace DemoMVVM.Todo.ViewModel
@@ -16,15 +10,28 @@ namespace DemoMVVM.Todo.ViewModel
     {
         private TodoListStatus? status;
         private bool isEnabled;
+        private string title;
+        private string dueDate;
+
+        public string Title
+        {
+            get { return title; }
+            set { title = value; }
+        }
+
+        public string DueDate
+        {
+            get { return dueDate; }
+            set { dueDate = value; }
+        }
 
         public RelayCommand CreateClicked { get; set; }
         public RelayCommand EditClicked { get; set; }
         public RelayCommand DeleteClicked { get; set; }
-        public  ObservableCollection<Models.Todo> Todos { get; set; }
+        public ObservableCollection<Todo> Todos { get; set; }
 
-        public TodoListStatus? Status { get => status; 
-            set => SetProperty(ref status, value); }
-        public bool IsEnabled { get => isEnabled; set => SetProperty(ref isEnabled, value); } 
+        public TodoListStatus? Status { get => status; set => SetProperty(ref status, value); }
+        public bool IsEnabled { get => isEnabled; set => SetProperty(ref isEnabled, value); }
 
         public TodoListViewModel()
         {
@@ -34,7 +41,6 @@ namespace DemoMVVM.Todo.ViewModel
             DeleteClicked = new RelayCommand(DeleteCommand, CanDeleteCommand);
             IsEnabled = true;
         }
-
 
         private void CreateCommand()
         {
@@ -60,7 +66,5 @@ namespace DemoMVVM.Todo.ViewModel
         {
             throw new NotImplementedException();
         }
-
-
     }
 }

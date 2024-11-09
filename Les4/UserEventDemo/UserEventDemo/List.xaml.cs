@@ -26,7 +26,7 @@ namespace UserEventDemo
         public event EventHandler<Person> selectionChanged;
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private ObservableCollection<Person> people = new ObservableCollection<Person>()
+        private List<Person> people = new List<Person>()
             {
                 new Person() { Name = "John Doe", PhoneNumber = "1234567890", Email = "john.doe@example.com" },
                 new Person() { Name = "Jane Smith", PhoneNumber = "9876543210", Email = "jane.smith@example.com" },
@@ -34,6 +34,12 @@ namespace UserEventDemo
             };
         private Person selectedPerson;
         private int age;
+
+        public ObservableCollection<Person> People
+        {
+            get; set;
+            
+        }
 
         public Person SelectedPerson
         {
@@ -54,17 +60,10 @@ namespace UserEventDemo
                 OnPropertyChanged();
             }
         }
-
-        public ObservableCollection<Person> People { 
-            get => people; 
-            set => people = value;
-        }
-
         public List()
         {
             InitializeComponent();
             DataContext = this;
-           
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
@@ -86,16 +85,16 @@ namespace UserEventDemo
                 //}
             }
         }
-
-        internal void AddPerson(Person obj)
-        {
-            People.Add(obj);
-           // OnPropertyChanged("People");
-        }
-
+        
         //protected virtual void OnSelectionChanged(Person p)
         //{
         //    selectionChanged?.Invoke(this, p);
         //}
+
+        internal void AddPerson(Person person)
+        {
+            people.Add(person);
+            // OnPropertyChanged("people");
+        }
     }
 }

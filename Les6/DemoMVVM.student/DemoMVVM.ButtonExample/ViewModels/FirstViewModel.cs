@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DemoMVVM.ButtonExample.ViewModels
 {
-    class FirstViewModel
+    class FirstViewModel : BaseViewModel
     {
         public RelayCommand SecondButtonCommand { get; set; }
         public RelayCommand ThirdButtonCommand { get; set; }
@@ -20,6 +20,7 @@ namespace DemoMVVM.ButtonExample.ViewModels
 
         private void GotoPage3()
         {
+            Change 
         }
 
         private void GotoPage2()

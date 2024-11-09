@@ -30,5 +30,6 @@ namespace DemoMVVM.Todo.Models
         public DateTime? DueDate { get => dueDate; set => SetProperty(ref dueDate, value); }
         public bool Checked { get => _checked; set => SetProperty(ref _checked, value); }
         public Guid Id { get => id; set => id = value; }
+        public bool IsCompleted { get; internal set; }
     }
 }

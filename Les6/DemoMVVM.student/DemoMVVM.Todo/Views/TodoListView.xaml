@@ -20,10 +20,10 @@
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <StackPanel Orientation="Horizontal">
-                        <CheckBox />
+                        <CheckBox IsChecked="{Binding IsCompleted}"/>
                         <StackPanel Orientation="Vertical">
-                            <Label />
-                            <Label />
+                            <Label Content="{Binding Title}"/>
+                            <Label Content="{Binding DueDate, StringFormat=\{0:dd/MM/yyyy\}}"/>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>
